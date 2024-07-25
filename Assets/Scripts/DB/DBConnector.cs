@@ -47,21 +47,26 @@ namespace DB
             
             if (userExists || string.Equals(_existUser.Login, login, StringComparison.CurrentCultureIgnoreCase))
                 _inputUIMessages.ThrowRegisterErrorException("User with this login already exists");
+            
             if(login.Length < 3)
                 _inputUIMessages.ThrowRegisterErrorException("Minimum login length is 3 characters");
+            
             if(password.Length < 4)
                 _inputUIMessages.ThrowRegisterErrorException("Minimum password length is 4 characters");
 
-            string hashedPassword = HashPassword(password);
             
+            string hashedPassword = HashPassword(password);
             
             UserData newUser = new()
             {
-                Exp = 0,
-                Level = 0,
                 Login = login,
                 Password = hashedPassword,
-                UpCoins = 0
+                LevelExp = 0,
+                Level = 0,
+                UpCoins = 0,
+                PhysicalAbilities = 50,
+                IntellectualAbilities = 50,
+                ProfessionalAbilities = 50
             };
             
             string json = JsonConvert.SerializeObject(newUser);
@@ -98,11 +103,14 @@ namespace DB
             
             UserData existedUser = new()
             {
-                Exp = _existUser.Exp,
-                Level = _existUser.Level,
                 Login = _existUser.Login,
                 Password = HashPassword(newPassword),
-                UpCoins = _existUser.UpCoins
+                LevelExp = _existUser.LevelExp,
+                Level = _existUser.Level,
+                UpCoins = _existUser.UpCoins,
+                PhysicalAbilities = _existUser.PhysicalAbilities,
+                IntellectualAbilities = _existUser.IntellectualAbilities,
+                ProfessionalAbilities = _existUser.ProfessionalAbilities
             };
             
             string json = JsonConvert.SerializeObject(existedUser);
@@ -183,12 +191,13 @@ namespace DB
         public string Login;
         [HideInInspector] public string Password;
         
-        public int Exp;
+        public int LevelExp;
         public int Level;
         
         public int UpCoins;
 
-        public int PhysicalAbilities;
-        public int IntellectualAbilities;
+        public float PhysicalAbilities;
+        public float IntellectualAbilities;
+        public float ProfessionalAbilities;
     }
 }

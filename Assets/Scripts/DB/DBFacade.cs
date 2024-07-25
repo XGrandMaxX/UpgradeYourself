@@ -43,7 +43,10 @@ namespace DB
         
         private async void CreateNewUser()
         {
-            if (string.IsNullOrEmpty(_registerUser._loginField.text) || string.IsNullOrEmpty(_registerUser._passwordField.text))
+            if (string.IsNullOrWhiteSpace(_registerUser._loginField.text))
+                return;
+            
+            if (string.IsNullOrWhiteSpace(_registerUser._passwordField.text))
                 return;
             
             StartCoroutine(ButtonCooldown(.5f, _registerButton));
@@ -62,14 +65,17 @@ namespace DB
 
         private async void LoginUser()
         { 
-            if (string.IsNullOrEmpty(_loginUser._loginField.text) || string.IsNullOrEmpty(_loginUser._passwordField.text))
+            if (string.IsNullOrWhiteSpace(_loginUser._loginField.text))
+                return;
+            
+            if(string.IsNullOrWhiteSpace(_loginUser._passwordField.text))
                 return;
             
             StartCoroutine(ButtonCooldown(.5f, _loginButton));
             
             UserData currentUser = await _connector.LoginUserAsync(_loginUser._loginField.text, _loginUser._passwordField.text);
             
-            UserSession.Instance.SaveUserSession(currentUser);
+            UserSession.UploadUserSession(currentUser);
             
             SceneLoader.LoadNextSceneAsync();
         }
