@@ -1,6 +1,5 @@
-using System;
 using System.Threading;
-using System.Threading.Tasks;
+using DB;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,56 +22,26 @@ namespace Core
         
         [SerializeField] private TMP_Text _userLevel;
         [SerializeField] private TMP_Text _userUpCoins;
+        [SerializeField] private TMP_Text _userName;
         
-        [Space(20)]
+        private readonly CancellationTokenSource _source = new();
         
-        private UserSession _userSession;
-        private CancellationTokenSource _source = new();
-        private async void Start()
-        {
-            await FindUserSession();
-            LoadAndApplyData();
-        }
-
-        private async Task FindUserSession(int maxRetries = 40, int delayMilliseconds = 250)
-        {
-            int retryCount = 0;
-    
-            while (retryCount < maxRetries)
-            {
-                _userSession = FindObjectOfType<UserSession>();
-        
-                if (_userSession != null)
-                    return;
-        
-                retryCount++;
-        
-                try
-                {
-                    await Task.Delay(delayMilliseconds, _source.Token);
-                }
-                catch (TaskCanceledException)
-                {
-                    // Логика для обработки отмены задачи, если необходимо.
-                    throw new OperationCanceledException("Operation was cancelled", _source.Token);
-                }
-            }
-
-            throw new Exception("User Session was not found!");
-        }
-        
+        private void Start() => LoadAndApplyData();
         private void LoadAndApplyData()
         {
-            _physicalAbilitiesSlider.value = _userSession.UserData.PhysicalAbilities;
-            _intellectualAbilitiesSlider.value = _userSession.UserData.IntellectualAbilities;
-            _userExpSlider.value = _userSession.UserData.Exp;
-
-            _physicalAbilitiesValueText.text = $"{_userSession.UserData.PhysicalAbilities}/10000";
-            _intellectualAbilitiesValueText.text = $"{_userSession.UserData.IntellectualAbilities}/10000";
-            _userExpValueText.text = $"{_userSession.UserData.Exp}/100";
+            UserData userData = UserSession.UserData;
             
-            _userLevel.text =  $"Level: {_userSession.UserData.Level}";
-            _userUpCoins.text = _userSession.UserData.UpCoins.ToString();
+            _physicalAbilitiesSlider.value = userData.PhysicalAbilities;
+            _intellectualAbilitiesSlider.value = userData.IntellectualAbilities;
+            _userExpSlider.value = userData.LevelExp;
+            
+            _physicalAbilitiesValueText.text = $"{userData.PhysicalAbilities}/10000";
+            _intellectualAbilitiesValueText.text = $"{userData.IntellectualAbilities}/10000";
+            _userExpValueText.text = $"{userData.LevelExp}/100";
+            
+            _userLevel.text = $"Level {userData.Level}";
+            _userUpCoins.text = userData.UpCoins.ToString();
+            _userName.text = userData.Login;
         }
 
         private void OnDestroy()

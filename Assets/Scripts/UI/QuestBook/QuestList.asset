@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: QuestList
+  m_EditorClassIdentifier: Assembly-CSharp:UI.QuestBook:QuestList
+  _physicalQuests:
+  - <Description>k__BackingField: "10 \u043F\u0440\u0438\u0441\u0435\u0434\u0430\u043D\u0438\u0439"
+    <Level>k__BackingField: 0
+    <Rewards>k__BackingField:
+      RewardImg:
+      - {fileID: 21300000, guid: 75dbf52308fc46d4d98c16c1d99b4fe2, type: 3}
+      - {fileID: 21300000, guid: 105343261d330684c889f1bfd5e0c610, type: 3}
+      - {fileID: 21300000, guid: 46ed791b093eb7d49a58d863e7e22ef3, type: 3}
+      - {fileID: 21300000, guid: d97470b219530c74ab18ce7bdcd2ce21, type: 3}
+      - {fileID: 21300000, guid: 52e2e4ebefc5e214c99522a1258fc0d9, type: 3}
+      LevelExp: 1
+      UpCoins: 1
+  _intellectualQuests:
+  - <Description>k__BackingField: "\u041D\u0430\u0443\u0447\u0438\u0442\u044C \u0410\u0440\u0442\u0435\u043C\u0430
+      \u0434\u044B\u0448\u0430\u0442\u044C"
+    <Level>k__BackingField: 0
+    <Rewards>k__BackingField:
+      RewardImg:
+      - {fileID: 21300000, guid: 52e2e4ebefc5e214c99522a1258fc0d9, type: 3}
+      - {fileID: 21300000, guid: d97470b219530c74ab18ce7bdcd2ce21, type: 3}
+      LevelExp: 2
+      UpCoins: 2
+  _professionalQuests:
+  - <Description>k__BackingField: "\u041F\u043E\u0441\u0438\u0434\u0435\u0442\u044C
+      \u043D\u0430\u0434 \u044E\u043D\u0438\u0442\u0438 30 \u043C\u0438\u043D\u0443\u0442"
+    <Level>k__BackingField: 0
+    <Rewards>k__BackingField:
+      RewardImg:
+      - {fileID: 21300000, guid: bc949e3c86f17f34ca6fc831739a0c93, type: 3}
+      - {fileID: 21300000, guid: 5c59cb70aaed1b047bc56f14e9286892, type: 3}
+      - {fileID: 21300000, guid: 52e2e4ebefc5e214c99522a1258fc0d9, type: 3}
+      LevelExp: 3
+      UpCoins: 3
