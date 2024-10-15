@@ -1,0 +1,18 @@
+{
+    "tasks": [
+        {
+            "Id": 1,
+            "Title": "Изучить что-то новое в Unity, потратив не менее часа, установите таймер!",
+            "Category": "Career",
+            "Reward": {
+                "Coins": 3,
+                "Exp": 2
+            },
+            "RecommendedLevel": {
+                "min": 0,
+                "max": 10
+            },
+            "IsCompleted": false
+        }
+    ]
+}

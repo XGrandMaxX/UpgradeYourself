@@ -3,7 +3,7 @@ using System;
 namespace Develop.Scripts.Data.Models
 {
     [System.Serializable]
-    public class Task
+    public sealed class Task
     {
         public int Id;
 
@@ -19,7 +19,7 @@ namespace Develop.Scripts.Data.Models
     }
 
     [System.Serializable]
-    public class Reward
+    public sealed class Reward
     { 
         public int Coins;
         public int Exp;
