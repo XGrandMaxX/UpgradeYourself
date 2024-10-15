@@ -9,48 +9,56 @@ namespace Develop.Scripts.Managers
 {
     public sealed class TaskCreationManager
     {
-        private TaskLoader _taskLoader;
-        private RewardManager _rewardManager;
-        private TaskFactory _taskFactory;
+        private readonly TaskLoader _taskLoader;
+        private readonly TaskFactory _taskFactory;
+        private readonly MyUserProfile _userProfile;
 
         public static List<Task> CreatedTasks { get; private set; } = new(1);
 
-        public TaskCreationManager(TaskLoader taskLoader, RewardManager rewardManager, TaskFactory taskFactory)
+        public TaskCreationManager(
+            TaskLoader taskLoader,
+            TaskFactory taskFactory,
+            MyUserProfile userProfile)
         {
             _taskLoader = taskLoader;
-            _rewardManager = rewardManager;
             _taskFactory = taskFactory;
+            _userProfile = userProfile;
 
             Initialize();
         }
 
         //Do not place in the Resources folder!
-        private static string GetJsonFilePath(int minLevel, int maxLevel) 
-            => $"{Application.dataPath}/Develop/Configs/TasksConfig({minLevel}-{maxLevel}lvl).json";
+        private static string GetJsonFilePath(string category, int minLevel, int maxLevel)
+            => $"{Application.dataPath}/Develop/Configs/[{category}]TasksConfig({minLevel}-{maxLevel}lvl).json";
 
         private void Initialize()
         {
-            List<Task> jsonTasks = GetLoadedTasks(1);
-            
-            if (jsonTasks.Count <= 0)
+            LoadTasksForCategory("Sport", _userProfile.GetLevelByCategory("Sport"));
+            LoadTasksForCategory("Career", _userProfile.GetLevelByCategory("Career"));
+        }
+
+        private void LoadTasksForCategory(string category, int level)
+        {
+            List<Task> tasks = GetLoadedTasksForCategory(category, level);
+
+            if (tasks.Count <= 0)
             {
-                Debug.LogError("Json tasks count <= 0");
+                Debug.LogError($"Json tasks count for {category} <= 0");
                 return;
             }
 
-            foreach (var jsonTask in jsonTasks)
+            foreach (var task in tasks)
             {
-                Debug.Log($"Creating task: <color=yellow>{jsonTask.Title}</color>, with ID: <color=yellow>{jsonTask.Id}</color>, {jsonTask.Reward.Coins}");
+                Debug.Log($"Creating task: <color=yellow>{task.Title}</color> in category: <color=yellow>{category}</color>, with ID: <color=yellow>{task.Id}</color>");
+                Task newTask = _taskFactory.CreateTask(task);
 
-                Task task = _taskFactory.CreateTask(jsonTask);
-
-                CreatedTasks.Add(task);
+                CreatedTasks.Add(newTask);
             }
         }
 
-        private List<Task> GetLoadedTasks(int level)
+        private List<Task> GetLoadedTasksForCategory(string category, int level)
         {
-            string path = GetJsonFilePathForLevel(level);
+            string path = GetJsonFilePathForLevel(category, level);
 
             if (string.IsNullOrEmpty(path))
             {
@@ -61,14 +69,13 @@ namespace Develop.Scripts.Managers
             return _taskLoader.LoadTasks(path);
         }
 
-
-        private string GetJsonFilePathForLevel(int level)
+        private string GetJsonFilePathForLevel(string category, int level)
         {
             return level switch
             {
-                >= 0 and <= 10 => GetJsonFilePath(0, 10),
-                >= 11 and <= 20 => GetJsonFilePath(11, 20),
-                >= 21 and <= 30 => GetJsonFilePath(21, 30),
+                <= 10 => GetJsonFilePath(category, 0, 10),
+                <= 20 => GetJsonFilePath(category, 11, 20),
+                <= 30 => GetJsonFilePath(category, 21, 30),
                 _ => throw new ArgumentOutOfRangeException(nameof(level), "Уровень должен быть от 0 до 30")
             };
         }
