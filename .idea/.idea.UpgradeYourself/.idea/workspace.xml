@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d6bc91e-341a-4dd5-bbd5-a5f3d78c0cb4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Art.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Develop.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Develop/Scripts.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.UpgradeYourself/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UpgradeYourself/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Develop/Scripts/Bootstrap/Bootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Develop/Scripts/Bootstrap/Bootstrap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Bootstrap.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Bootstrap.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TaskTracker.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TaskTracker.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +20,10 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5879d8d225474494bcffdfe64965038e174000/84/b2c2050f/SceneManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Develop/Scripts/Managers/RewardManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Develop/Scripts/Managers/TaskCreationManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Develop/Scripts/Services/Installers/BootstrapInstaller.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Develop/Scripts/Services/Installers/TasksInstaller.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -37,7 +37,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/UY-1&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/UY-2&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -101,7 +101,11 @@
       <option name="presentableId" value="Default" />
       <updated>1727895549497</updated>
       <workItem from="1727895550561" duration="1995000" />
-      <workItem from="1728645644745" duration="565000" />
+      <workItem from="1728645644745" duration="2353000" />
+      <workItem from="1728763294178" duration="189000" />
+      <workItem from="1728764603965" duration="1503000" />
+      <workItem from="1728766134877" duration="486000" />
+      <workItem from="1728854376994" duration="310000" />
     </task>
     <servers />
   </component>
