@@ -6,10 +6,7 @@ namespace Develop.Scripts.Services.Installers
 {
     public sealed class BootstrapInstaller : MonoInstaller
     {
-        public override void InstallBindings()
-        {
-            Bind();
-        }
+        public override void InstallBindings() => Bind();
 
         private void Bind()
         {
