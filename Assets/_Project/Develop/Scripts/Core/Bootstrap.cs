@@ -20,7 +20,6 @@ public class Bootstrap : MonoBehaviour
     private void InitializeServices()
     {
         G.SceneLoader = SceneLoader.Instance;
-        G.ScreenFader = UIFader.Instance;
     }
 
     private async UniTask StartGame() => await G.SceneLoader.Load(_loadingScene);
